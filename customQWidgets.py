@@ -143,7 +143,6 @@ class cQWidgetTableGB(QWidget):
     
     for row in range(0,len(self.widgetTable)):
         for col in range(0,len(self.widgetTable[row])):
-          print("row %d col %d" % (row, col))
           if(type(self.widgetTable[row][col])!=str):
             self.widgetTable[row][col].setParent(self)
             rowspan=1
