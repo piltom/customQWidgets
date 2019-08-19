@@ -108,18 +108,18 @@ class cQWidgetTable(QWidget):
 
     for row in range(0,len(self.widgetTable)):
       for col in range(0,len(self.widgetTable[row])):
-          if(type(self.widgetTable[row][col])!=str):
-            self.widgetTable[row][col].setParent(self)
-            rowspan=1
-            try:
-              while(self.widgetTable[row+rowspan][col]=='span'):
-                rowspan+=1
-            except:
-              pass
-            colspan=int(self.width/len(self.widgetTable[row]))
-            super().layout().addWidget(self.widgetTable[row][col],row,col,rowspan,colspan)
-          elif(self.widgetTable[row][col]=='empty'):
-            super().layout().addItem(QSpacerItem(1, 1),row,col)
+        if(type(self.widgetTable[row][col])!=str):
+          self.widgetTable[row][col].setParent(self)
+          rowspan=1
+          try:
+            while(self.widgetTable[row+rowspan][col]=='span'):
+              rowspan+=1
+          except:
+            pass
+          colspan=int(self.width/len(self.widgetTable[row]))
+          super().layout().addWidget(self.widgetTable[row][col],row,col,rowspan,colspan)
+        elif(self.widgetTable[row][col]=='empty'):
+          super().layout().addItem(QSpacerItem(1, 1),row,col)
   def getWidget(self, arg_row, arg_col):
     return self.widgetTable[arg_row][arg_col]
   def setWidget(self, arg_widget, arg_row, arg_col):
@@ -143,18 +143,19 @@ class cQWidgetTableGB(QWidget):
     
     for row in range(0,len(self.widgetTable)):
         for col in range(0,len(self.widgetTable[row])):
-            if(type(self.widgetTable[row][col])!=str):
-              self.widgetTable[row][col].setParent(self)
-              rowspan=1
-              try:
-                while(self.widgetTable[row+1][col]=='span'):
-                  rowspan+=1
-              except:
-                pass
-              colspan=int(self.width/len(self.widgetTable[row]))
-              gb.layout().addWidget(self.widgetTable[row][col],row,col,rowspan,colspan)
-            elif(self.widgetTable[row][col]=='empty'):
-              super().layout().addItem(QSpacerItem(1, 1),row,col)
+          print("row %d col %d" % (row, col))
+          if(type(self.widgetTable[row][col])!=str):
+            self.widgetTable[row][col].setParent(self)
+            rowspan=1
+            try:
+              while(self.widgetTable[row+rowspan][col]=='span'):
+                rowspan+=1
+            except:
+              pass
+            colspan=int(self.width/len(self.widgetTable[row]))
+            gb.layout().addWidget(self.widgetTable[row][col],row,col,rowspan,colspan)
+          elif(self.widgetTable[row][col]=='empty'):
+            super().layout().addItem(QSpacerItem(1, 1),row,col)
     super().layout().addWidget(gb)
   
   def getWidget(self, arg_row, arg_col):
